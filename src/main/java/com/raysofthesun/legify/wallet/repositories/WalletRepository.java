@@ -1,6 +1,6 @@
-package com.raysofthesun.legify.repositories.wallet;
+package com.raysofthesun.legify.wallet.repositories;
 
-import com.raysofthesun.legify.models.wallet.Wallet;
+import com.raysofthesun.legify.wallet.models.Wallet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Repository;

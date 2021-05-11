@@ -1,4 +1,4 @@
-package com.raysofthesun.legify.exceptions.wallet;
+package com.raysofthesun.legify.wallet.exceptions.types;
 
 public class WalletNotFoundException extends RuntimeException {
 	public WalletNotFoundException(String walletId) {

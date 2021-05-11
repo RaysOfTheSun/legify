@@ -1,8 +1,8 @@
-package com.raysofthesun.legify.services.wallet;
+package com.raysofthesun.legify.wallet.services;
 
-import com.raysofthesun.legify.exceptions.wallet.WalletNotFoundException;
-import com.raysofthesun.legify.models.wallet.Wallet;
-import com.raysofthesun.legify.repositories.wallet.WalletRepository;
+import com.raysofthesun.legify.wallet.exceptions.types.WalletNotFoundException;
+import com.raysofthesun.legify.wallet.models.Wallet;
+import com.raysofthesun.legify.wallet.repositories.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,18 +12,21 @@ import java.util.List;
 public class WalletService {
 
 	final private WalletRepository walletRepository;
+	final private WalletCreatorService walletCreatorService;
 
 	@Autowired
-	public WalletService(WalletRepository walletRepository) {
+	public WalletService(WalletRepository walletRepository, WalletCreatorService walletCreatorService) {
 		this.walletRepository = walletRepository;
+		this.walletCreatorService = walletCreatorService;
 	}
 
 	public List<? extends Wallet> getAllWalletsByOwnerId(String ownerId) {
 		return this.walletRepository.getAllWalletsByOwnerId(ownerId);
 	}
 
-	public <T extends Wallet> T createWallet(T wallet) {
-		return this.walletRepository.createWallet(wallet);
+	public Wallet createWallet(Wallet wallet) {
+		final Wallet walletToCreate = this.walletCreatorService.makeWalletFromMeta(wallet);
+		return this.walletRepository.createWallet(walletToCreate);
 	}
 
 	public String deleteWallet(String walletId) {

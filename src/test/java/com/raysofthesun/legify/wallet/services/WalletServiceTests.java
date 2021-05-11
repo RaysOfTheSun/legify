@@ -1,7 +1,8 @@
-package com.raysofthesun.legify.services.wallet;
+package com.raysofthesun.legify.wallet.services;
 
-import com.raysofthesun.legify.exceptions.wallet.WalletNotFoundException;
-import com.raysofthesun.legify.repositories.wallet.WalletRepository;
+import com.raysofthesun.legify.wallet.exceptions.types.WalletNotFoundException;
+import com.raysofthesun.legify.wallet.repositories.WalletRepository;
+import com.raysofthesun.legify.wallet.services.WalletService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
