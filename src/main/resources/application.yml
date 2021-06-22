@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: legify
+  security:
+    user:
+      name: user
+      password: user

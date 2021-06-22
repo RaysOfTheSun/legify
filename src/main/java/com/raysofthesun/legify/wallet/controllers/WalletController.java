@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin
+@CrossOrigin()
 @RestController
 @RequestMapping("/wallets")
 public class WalletController {
@@ -30,5 +30,10 @@ public class WalletController {
 	@GetMapping("/vault/{ownerId}")
 	public List<? extends Wallet> getAllWalletsByOwnerId(@PathVariable String ownerId) {
 		return this.walletService.getAllWalletsByOwnerId(ownerId);
+	}
+
+	@GetMapping("/session")
+	public boolean makeSession() {
+		return true;
 	}
 }

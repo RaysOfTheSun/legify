@@ -1,5 +1,8 @@
 package com.raysofthesun.legify.wallet.services;
 
+import com.raysofthesun.legify.exceptions.models.ErrorConfig;
+import com.raysofthesun.legify.wallet.config.WalletErrorConfig;
+import com.raysofthesun.legify.wallet.constants.WalletErrorType;
 import com.raysofthesun.legify.wallet.exceptions.types.WalletNotFoundException;
 import com.raysofthesun.legify.wallet.repositories.WalletRepository;
 import com.raysofthesun.legify.wallet.services.WalletService;
@@ -21,6 +24,9 @@ public class WalletServiceTests {
 
 	@Mock
 	private WalletRepository walletRepository;
+
+	@Mock
+	private WalletErrorConfig walletErrorConfig;
 
 	@InjectMocks
 	private WalletService walletService;
@@ -46,6 +52,9 @@ public class WalletServiceTests {
 	public void shouldThrowWhenDeleteWalletDoesNothing() {
 		when(this.walletRepository.deleteWallet(targetWalletId))
 				.thenReturn("");
+
+		when(this.walletErrorConfig.getErrorConfig(WalletErrorType.WALLET_NOT_FOUND))
+				.thenReturn(new ErrorConfig());
 
 		assertThrows(WalletNotFoundException.class,
 				() -> this.walletService.deleteWallet(targetWalletId));

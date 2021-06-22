@@ -1,0 +1,10 @@
+---
+spring:
+  profiles:
+    active: cor-qa
+  cloud:
+    config:
+      uri: http://localhost:8081
+      username: raysofthesun
+      password: p@ssw0rd
+

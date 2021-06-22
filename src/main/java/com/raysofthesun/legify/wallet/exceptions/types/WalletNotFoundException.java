@@ -1,9 +1,10 @@
 package com.raysofthesun.legify.wallet.exceptions.types;
 
-public class WalletNotFoundException extends RuntimeException {
-	public WalletNotFoundException(String walletId) {
-		// TODO: place error messages in a JSON config file for easy modification
-		super(String.format("The operation involving the wallet with the id of %s failed as it " +
-				"does not exist.", walletId));
+import com.raysofthesun.legify.exceptions.models.ErrorConfig;
+import com.raysofthesun.legify.exceptions.models.LegifyConfigurableException;
+
+public class WalletNotFoundException extends LegifyConfigurableException {
+	public WalletNotFoundException(ErrorConfig errorConfig) {
+		super(errorConfig, errorConfig.getTemplate());
 	}
 }
